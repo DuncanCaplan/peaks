@@ -16,3 +16,5 @@ async function authenticator(req, res, next) {
         res.status(403).json({ error: err.message });
     }
 }
+
+module.exports = authenticator;

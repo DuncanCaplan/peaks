@@ -4,7 +4,7 @@ document.getElementById("login-form").addEventListener("submit", async (e) => {
     const form = new FormData(e.target);
 
     const options = {
-        method: "GET",
+        method: "POST",
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
@@ -15,11 +15,12 @@ document.getElementById("login-form").addEventListener("submit", async (e) => {
         })
     }
 
-    const response = await fetch("http://localhost:3000/login", options);
+    const response = await fetch("http://localhost:3000/users/login", options);
     const data = await response.json();
 
     if (response.status == 200) {
         localStorage.setItem("token", data.token);
+        console.log(data.token)
         window.location.assign("peaks.html");
     } else {
         alert(data.error);
