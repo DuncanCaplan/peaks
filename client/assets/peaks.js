@@ -9,6 +9,12 @@ function createPostElement (data) {
     const content = document.createElement("p");
     content.textContent = data["content"];
     post.appendChild(content);
+    
+    const dlt = document.createElement("button");
+    dlt.textContent = "Delete";
+    post.appendChild(dlt);
+    dlt.addEventListener("click", () => deletePost(data.id));
+
 
     return post;
 }
@@ -34,6 +40,7 @@ document.getElementById("post-form").addEventListener("submit", async (e) => {
 
     if (result.status == 201) {
         window.location.reload();
+       
     }
 })
 
@@ -59,6 +66,27 @@ async function loadPosts () {
         window.location.assign("./index.html");
     }
 
+}
+
+async function deletePost(post_id) {
+    const options = {
+        method: "DELETE",
+        headers: {
+            'Authorization': localStorage.getItem("token")
+        }
+    };
+
+    const response = await fetch(`http://localhost:3000/posts/${post_id}`, options);
+
+    if (response.status == 204) {
+        window.location.reload();
+
+        // Successfully deleted, reload the posts
+        loadPosts();
+    } else {
+        // Handle error
+        console.error("Error deleting post");
+    }
 }
 
 loadPosts();

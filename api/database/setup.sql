@@ -1,13 +1,15 @@
 DROP TABLE IF EXISTS peaks;
 DROP TABLE IF EXISTS user_account;
+DROP TABLE IF EXISTS posts;
+DROP TABLE IF EXISTS token;
 
 
-CREATE TABLE peaks (
-    name varchar(35) NOT NULL,
-    country char(20) NOT NULL,
-    type char(50) NOT NULL,
-    finish_time varchar(50) NOT NULL
-);
+-- CREATE TABLE peaks (
+--     name varchar(35) NOT NULL,
+--     country char(20) NOT NULL,
+--     type char(50) NOT NULL,
+--     finish_time varchar(50) NOT NULL
+-- );
 CREATE TABLE post (
     post_id INT GENERATED ALWAYS AS IDENTITY,
     title VARCHAR (100) NOT NULL,
@@ -31,10 +33,10 @@ CREATE TABLE token (
     FOREIGN KEY (user_id) REFERENCES user_account("user_id")
 );
 
-INSERT INTO peaks (name, country, type, finish_time)
-VALUES ('Ben Nevis', 'Scotland', 'Munro', '6-8 hours'),
-       ('Mount Everest', 'Nepal', 'Himalaya', '10-12 weeks'),
-       ('Kilimanjaro', 'Tanzania', 'Volcanic', '5-6 days'),
-       ('Denali', 'United States', 'Alaska Range', '2-3 weeks'),
-       ('Matterhorn', 'Switzerland', 'Alps', '2-3 days'),
-       ('Aconcagua', 'Argentina', 'Andes', '3-4 weeks');
+-- INSERT INTO peaks (name, country, type, finish_time)
+-- VALUES ('Ben Nevis', 'Scotland', 'Munro', '6-8 hours'),
+--        ('Mount Everest', 'Nepal', 'Himalaya', '10-12 weeks'),
+--        ('Kilimanjaro', 'Tanzania', 'Volcanic', '5-6 days'),
+--        ('Denali', 'United States', 'Alaska Range', '2-3 weeks'),
+--        ('Matterhorn', 'Switzerland', 'Alps', '2-3 days'),
+--        ('Aconcagua', 'Argentina', 'Andes', '3-4 weeks');
