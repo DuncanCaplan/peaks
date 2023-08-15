@@ -1,10 +1,19 @@
 DROP TABLE IF EXISTS peaks;
+DROP TABLE IF EXISTS user_account;
+
 
 CREATE TABLE peaks (
     name varchar(35) NOT NULL,
     country char(20) NOT NULL,
     type char(50) NOT NULL,
     finish_time varchar(50) NOT NULL
+);
+
+CREATE TABLE user_account (
+    user_id INT GENERATED ALWAYS AS IDENTITY,
+    username VARCHAR(30) UNIQUE NOT NULL,
+    password CHAR(60) NOT NULL,
+    PRIMARY KEY (user_id)
 );
 
 INSERT INTO peaks (name, country, type, finish_time)
